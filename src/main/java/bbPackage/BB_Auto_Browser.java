@@ -60,7 +60,7 @@ public class BB_Auto_Browser {
 			String actualTitle = driver1.getTitle();
 			String expectedTitle = "Computers database";
 			Assert.assertEquals(expectedTitle, actualTitle);
-			System.out.println("actualTitle is - " + actualTitle);
+			System.out.println("Actual Title is - " + actualTitle);
 			Reporter.log("<br>Web Page title displayed as Computers database </br>");
 		} catch (Exception e) {
 			throw new IllegalStateException("Can't get title", e);
