@@ -6,9 +6,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.*;
 import java.util.concurrent.TimeUnit;
 import org.testng.Reporter;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 
+@Listeners(GenerateReport.class)
 public class BB_Auto_Browser {
 
 	WebDriver driver1;
@@ -21,7 +21,13 @@ public class BB_Auto_Browser {
 	public void setBrowserChrome() {
 
 		try {
-//			System.setProperty("webdriver.chrome.driver", "\"/path/to/chromedriver\"");
+
+			/**
+			 *   Uncomment the below Line on Windows. Update the path of your chrome driver in local machine
+			 *   On Mac, brew install chromedriver and set the PATH variable to point to the chromeDriver.
+ 			 */
+			//System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+
 			driver1 = new ChromeDriver();
 			driver1.get("http://computer-database.herokuapp.com/computers");
 			driver1.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -40,12 +46,10 @@ public class BB_Auto_Browser {
 
 		try {
 			driver1.quit();
-
 		} catch (Exception e) {
 			throw new IllegalStateException("Can't close Web Driver", e);
 
 		}
-
 	}
 
 
@@ -64,9 +68,7 @@ public class BB_Auto_Browser {
 			Reporter.log("<br>Web Page title displayed as Computers database </br>");
 		} catch (Exception e) {
 			throw new IllegalStateException("Can't get title", e);
-
 		}
-
 	}
 
 	/**
@@ -74,24 +76,26 @@ public class BB_Auto_Browser {
  	 */
 
 
-	public boolean addComputer() {
+	public void addComputer() {
 
 		try {
 			driver1.findElement(By.id("add")).click();
-			driver1.findElement(By.xpath("//*[contains(text(),'Add a computer')]")).isDisplayed();
-			driver1.findElement(By.name("name")).sendKeys("tttts");
-			driver1.findElement(By.name("introduced")).sendKeys("2017-07-07");
-			driver1.findElement(By.name("discontinued")).sendKeys("2019-09-09");
-			Select dropdown = new Select(driver1.findElement(By.id("company")));
-			dropdown.selectByIndex(2);
-			driver1.findElement(By.xpath("//*[@type='submit' ]")).submit();
-			if (driver1.findElement(By.xpath("//div[contains(.,'has been created')]")).isDisplayed()) {
-				Reporter.log("<br>New Computer Added Suucessfully</br>");
-				return true;
+			boolean isValueDisplayed = driver1.findElement(By.xpath("//*[contains(text(),'Add a computer')]")).isDisplayed();
+			if(isValueDisplayed) {
+				driver1.findElement(By.name("name")).sendKeys("tttts");
+				driver1.findElement(By.name("introduced")).sendKeys("2017-07-07");
+				driver1.findElement(By.name("discontinued")).sendKeys("2019-09-09");
+				Select dropdown = new Select(driver1.findElement(By.id("company")));
+				dropdown.selectByIndex(2);
+				driver1.findElement(By.xpath("//*[@type='submit' ]")).submit();
+				if (driver1.findElement(By.xpath("//div[contains(.,'has been created')]")).isDisplayed()) {
+					Reporter.log("<br>New Computer Added Suucessfully</br>");
+					System.out.println("New Computer Added Suucessfully");
 
-			} else {
-				Reporter.log("<br>cant ADD computer</br>");
-				return false;
+				} else {
+					Reporter.log("<br>Cant ADD computer</br>");
+					System.out.println("Cant ADD computer");
+				}
 			}
 		} catch (Exception e) {
 			throw new IllegalStateException("<br>cant ADD computer</br>", e);
@@ -137,23 +141,29 @@ public class BB_Auto_Browser {
 
 			driver1.findElement(By.id("searchbox")).sendKeys("tttts");
 			Thread.sleep(1000);
+
 			driver1.findElement(By.xpath("//*[@id='searchsubmit']")).submit();
 			Thread.sleep(1000);
+
 			driver1.findElement(By.xpath("//*[contains(text(),'tttts')]")).click();
 			String name = driver1.findElement(By.name("name")).getAttribute("value");
-			System.out.println(name);
-			Reporter.log("<br>Computer name /br> " + name);
+			System.out.println("Search for Computer Name : " + name);
+			Reporter.log("<br>Search for Computer Name : /br> " + name);
+
 			String Date1 = driver1.findElement(By.name("introduced")).getAttribute("value");
-			System.out.println(Date1);
+			System.out.println("Computer introduced date : " + Date1);
 			Reporter.log("<br>Computer introduced date /br> " + Date1);
+
 			String Date2 = driver1.findElement(By.name("discontinued")).getAttribute("value");
-			System.out.println(Date2);
+			System.out.println("Computer discontinued date: " + Date2);
 			Reporter.log("<br>Computer discontinued date /br> " + Date2);
+
 			Select archiveList = new Select(driver1.findElement(By.id("company")));
 			String selectedValue = archiveList.getFirstSelectedOption().getText();
-			System.out.println(selectedValue);
+			System.out.println("Company Name:" + selectedValue);
 			Reporter.log("<br>Company name /br> " + selectedValue);
-			Reporter.log("<br>Computer details Read</br> ");
+
+			Reporter.log("<br>Computer details read</br> ");
 			driver1.findElement(By.xpath("//*[@id='main']/form/div/a")).click();
 
 		} catch (Exception e) {
@@ -172,8 +182,10 @@ public class BB_Auto_Browser {
 
 			driver1.findElement(By.id("searchbox")).sendKeys("tttts");
 			Thread.sleep(1000);
+
 			driver1.findElement(By.xpath("//*[@id='searchsubmit']")).submit();
 			Thread.sleep(1000);
+
 			driver1.findElement(By.xpath("//*[contains(text(),'tttts')]")).click();
 			driver1.findElement(By.name("discontinued")).clear();
 			driver1.findElement(By.name("discontinued")).sendKeys("2039-12-09");
@@ -182,17 +194,18 @@ public class BB_Auto_Browser {
 			// js.executeScript("window.document.getElementByxpath('//*[@id='main']/form[1]/div/input').click()");
 			String actualTitle = driver1.findElement(By.xpath("//*[@id='main']/div[1]")).getText();
 			System.out.println(actualTitle);
+
 			if (driver1.findElement(By.xpath("//div[contains(.,'has been updated')]")).isDisplayed()) {
 				System.out.println("Transaction successful");
 				Reporter.log("<br>Computer has been updated</br>");
 			}
 
 			else {
-				Reporter.log("<br>cant search computer</br>");
+				Reporter.log("<br>Cant search computer</br>");
 			}
 
 		} catch (Exception e) {
-			throw new IllegalStateException("cant update computer", e);
+			throw new IllegalStateException("Cant update computer", e);
 
 		}
 
@@ -208,10 +221,13 @@ public class BB_Auto_Browser {
 			driver1.findElement(By.xpath("//*[contains(text(),'Next')]")).isDisplayed();
 			driver1.findElement(By.xpath("//*[contains(text(),'Next')]")).click();
 			driver1.findElement(By.xpath("//*[contains(text(),'Next')]")).click();
+
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Previous')]")).isDisplayed()) {
 				driver1.findElement(By.xpath("//*[contains(text(),'Previous')]")).click();
+				System.out.println("Application navigation successful - links working fine");
 				Reporter.log("<br>Application navigation successful - links working fine</br>");
 			} else {
+				System.out.println("Cant navigate");
 				Reporter.log("<br>Cant navigate</br>");
 			}
 
@@ -230,13 +246,19 @@ public class BB_Auto_Browser {
 		try {
 
 			driver1.findElement(By.xpath("//*[@id='add']")).click();
+			System.out.println("Navigated to Add Computer Page");
 			Reporter.log("<br>Add computer Page </br>");
 			Thread.sleep(2000);
+
 			driver1.findElement(By.xpath("//*[@id='main']/form/div/a")).click();
-			Reporter.log("<br>cancel button is displayed</br>");
+			System.out.println("Cancel Button is displayed");
+			Reporter.log("<br>Cancel button is displayed</br>");
+
 			if (driver1.findElement(By.id("add")).isDisplayed()) {
+				System.out.println("Clicked on cancel button and back to homepage");
 				Reporter.log("<br>Clicked on cancel button and back to homepage</br>");
 			} else {
+				System.out.println("Cant navigate");
 				Reporter.log("<br>Cant navigate</br>");
 			}
 
@@ -255,18 +277,20 @@ public class BB_Auto_Browser {
 
 		try {
 
-			driver1.findElement(By.xpath("//*[@id='add']")).click();
+			driver1.findElement(By.id("add")).click();
 			Thread.sleep(2000);
+
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Add a computer')]")).isDisplayed()) {
+				System.out.println("Navigated to Add a computer page.");
 				Reporter.log("<br>Add a computer page is displayed</br>");
-				if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application — Computer database')]"))
+				if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application')]"))
 						.isDisplayed()) {
-					Reporter.log("<br>Play sample application — Computer database is displayed</br>");
-					driver1.findElement(By.xpath("//a[contains(text(),'Play sample application — Computer database')]"))
+					Reporter.log("<br>Play sample application Computer database is displayed</br>");
+					driver1.findElement(By.xpath("//a[contains(text(),'Play sample application')]"))
 							.click();
 					if (driver1.findElement(By.id("add")).isDisplayed()) {
 						Reporter.log(
-								"<br>Play sample application — Computer database link is clicked And Back to home page</br>");
+								"<br>Play sample application Computer database link is clicked And Back to home page</br>");
 					}
 
 				}
@@ -331,7 +355,7 @@ public class BB_Auto_Browser {
 		try {
 			Reporter.log("<br>Home Page UI validation</br>");
 
-			if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application — Computer database')]"))
+			if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application')]"))
 					.isDisplayed()) {
 				Reporter.log("<br>Play sample application — Computer database is displayed</br>");
 			} else {
@@ -398,9 +422,9 @@ public class BB_Auto_Browser {
 			driver1.findElement(By.xpath("//*[@id='add']")).click();
 			Reporter.log("<br>Add computer Page UI validation</br>");
 
-			if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application — Computer database')]"))
+			if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application')]"))
 					.isDisplayed()) {
-				Reporter.log("<br>Play sample application — Computer database is displayed</br>");
+				Reporter.log("<br>Play sample application Computer database is displayed</br>");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
 			}
@@ -487,6 +511,13 @@ public class BB_Auto_Browser {
 			throw new IllegalStateException("Cant view number of computers", e);
 
 		}
+
+	}
+
+	/**
+	 *  Helper Methods
+	 */
+	public void isPageLoaded(){
 
 	}
 
