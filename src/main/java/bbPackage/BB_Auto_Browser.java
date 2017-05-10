@@ -278,8 +278,6 @@ public class BB_Auto_Browser {
 		try {
 
 			driver1.findElement(By.id("add")).click();
-			Thread.sleep(2000);
-
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Add a computer')]")).isDisplayed()) {
 				System.out.println("Navigated to Add a computer page.");
 				Reporter.log("<br>Add a computer page is displayed</br>");
@@ -324,9 +322,11 @@ public class BB_Auto_Browser {
 					.findElement(
 							By.xpath("//*[contains(text(),'Computer name')]/following::span[contains(.,'Required')]"))
 					.isDisplayed()) {
-				Reporter.log("<br>name is the mandatory field for adding new computer</br>");
+				Reporter.log("<br>Name is the mandatory field for adding new computer</br>");
+				System.out.println("Name is mandatory while adding a new computer");
 			} else {
-				Reporter.log("<br>something's wrong- please check</br>");
+				Reporter.log("<br>Something's wrong- please check</br>");
+				System.out.println("Something's wrong- please check");
 			}
 
 			driver1.findElement(By.name("name")).sendKeys("AutoQA");
@@ -335,8 +335,10 @@ public class BB_Auto_Browser {
 
 			if (driver1.findElement(By.xpath("//div[contains(.,'has been created')]")).isDisplayed()) {
 				Reporter.log("<br>New Computer Added Suucessfully</br>");
+				System.out.println("New Computer Added Suucessfully");
 			} else {
-				Reporter.log("<br>cant ADD computer</br>");
+				Reporter.log("<br>Cant ADD computer</br>");
+				System.out.println("Cant ADD computer");
 			}
 
 		} catch (Exception e) {
@@ -357,53 +359,69 @@ public class BB_Auto_Browser {
 
 			if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application')]"))
 					.isDisplayed()) {
-				Reporter.log("<br>Play sample application — Computer database is displayed</br>");
+				Reporter.log("<br>Play sample application Computer database is displayed</br>");
+				System.out.println("Play sample application Computer database : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Play sample application Computer database : Not displayed");
 			}
 
 			if (driver1.findElement(By.id("searchbox")).isDisplayed()) {
 				Reporter.log("<br>Searchbox is displayed</br>");
+				System.out.println("Searchbox : displayed");
 			}
 
 			else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Searchbox : Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[@id='searchsubmit']")).isDisplayed()) {
 				Reporter.log("<br>Filter by name button is displayed</br>");
+				System.out.println("Filter by name button : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Filter by name button : Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Add a new computer')]")).isDisplayed()) {
 				Reporter.log("<br>Add a computer button is displayed</br>");
+				System.out.println("Add a computer button : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Add a computer button : Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Computer name')]")).isDisplayed()) {
 				Reporter.log("<br>Computer name column is displayed</br>");
+				System.out.println("Computer name column : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Computer name column : Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Introduced')]")).isDisplayed()) {
 				Reporter.log("<br>Introduced column is displayed</br>");
+				System.out.println("Introduced column : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Introduced column : Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Discontinued')]")).isDisplayed()) {
 				Reporter.log("<br>Discontinued column is displayed</br>");
+				System.out.println("Discontinued column : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Discontinued column : Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Company')]")).isDisplayed()) {
 				Reporter.log("<br>Company column is displayed</br>");
+				System.out.println("Company column : displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Company column : Not displayed");
 			}
 
 		} catch (Exception e) {
@@ -425,67 +443,89 @@ public class BB_Auto_Browser {
 			if (driver1.findElement(By.xpath("//a[contains(text(),'Play sample application')]"))
 					.isDisplayed()) {
 				Reporter.log("<br>Play sample application Computer database is displayed</br>");
+				System.out.println("Play sample application Computer database: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Play sample application Computer database: Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Computer name')]")).isDisplayed()) {
 				Reporter.log("<br>Computer name heading is displayed</br>");
+				System.out.println("Computer name heading: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Computer name heading: Not displayed");
 			}
 
 			if (driver1.findElement(By.name("name")).isDisplayed()) {
 				Reporter.log("<br>Name inputbox is displayed</br>");
+				System.out.println("Name inputbox: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Name inputbox: Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Introduced')]")).isDisplayed()) {
 				Reporter.log("<br>Introduced heading is displayed</br>");
+				System.out.println("Introduced heading: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Introduced heading: Not displayed");
 			}
 
 			if (driver1.findElement(By.name("introduced")).isDisplayed()) {
 				Reporter.log("<br>introduced inputbox is displayed</br>");
+				System.out.println("Introduced inputbox: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Introduced inputbox: Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Discontinued')]")).isDisplayed()) {
 				Reporter.log("<br>Discontinued heading is displayed</br>");
+				System.out.println("Discontinued heading: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Discontinued heading: Not displayed");
 			}
 
 			if (driver1.findElement(By.name("discontinued")).isDisplayed()) {
 				Reporter.log("<br>discontinued inputbox is displayed</br>");
+				System.out.println("Discontinued inputbox: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Discontinued inputbox: Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[contains(text(),'Company')]")).isDisplayed()) {
 				Reporter.log("<br>Company heading is displayed</br>");
+				System.out.println("Company heading: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Company heading: Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[@id='company']")).isDisplayed()) {
 				Reporter.log("<br>Company inputbox is displayed</br>");
+				System.out.println("Company inputbox: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Company inputbox: Not displayed");
 			}
 
 			if (driver1.findElement(By.xpath("//*[@type='submit' ]")).isDisplayed()) {
 				Reporter.log("<br>Create this computer button is displayed</br>");
+				System.out.println("Create this computer button: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("Create this computer button: Not displayed");
 			}
 			if (driver1.findElement(By.xpath("//*[@id='main']/form/div/a")).isDisplayed()) {
 				Reporter.log("<br>cancel button is displayed</br>");
+				System.out.println("cancel button: displayed");
 			} else {
 				Reporter.log("<br>NOT displayed</br>");
+				System.out.println("cancel button: Not displayed");
 			}
 			driver1.findElement(By.xpath("//*[@id='main']/form/div/a")).click();
 
@@ -504,20 +544,13 @@ public class BB_Auto_Browser {
 		try {
 
 			String Text = driver1.findElement(By.xpath("//*[@id='main']/h1")).getText();
-			System.out.println("total " + Text);
+			System.out.println("Total " + Text);
 			Reporter.log("<br>Total number of computers shown</br> " + Text);
 
 		} catch (Exception e) {
 			throw new IllegalStateException("Cant view number of computers", e);
 
 		}
-
-	}
-
-	/**
-	 *  Helper Methods
-	 */
-	public void isPageLoaded(){
 
 	}
 

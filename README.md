@@ -16,6 +16,9 @@ Step3: If you are on windows, please update your local chromeDriver path in BB_A
     
     
 Step4: Goto terminal and browse to root of the project. <br />
-Step5: You can either run mvn install from terminal <br />
+Step5: You can either run mvn clean install test from terminal <br />
 Step6: Or, you can directly goto ecllipse or intellJi and right click on testng.xml file and Run it directly <br />
+
+## Reports
+Open Target > Sunfire reports > index.html in browser
 
