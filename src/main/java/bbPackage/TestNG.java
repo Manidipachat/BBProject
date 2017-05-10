@@ -48,7 +48,7 @@ public class TestNG {
 
 	@Test
 	public void TC_006() {
-		System.out.println("********  Started Executing TC_006: Verify the page title **************");
+		System.out.println("********  Started Executing TC_006: Delete Computer **************");
 		br.deleteComputer();
 		System.out.println("********  End of Test Case TC_006 **************\n");
 	}

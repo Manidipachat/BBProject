@@ -122,7 +122,7 @@ public class BB_Auto_Browser {
 			System.out.println(actualTitle);
 			String expectedTitle = "Done! Computer has been deleted";
 			Assert.assertEquals(expectedTitle, actualTitle);
-			System.out.println("actualTitle is - " + actualTitle);
+			System.out.println("Computer has been deleted with message - Done! Computer has been deleted");
 			Reporter.log("<br>Computer has been deleted with message - Done! Computer has been deleted</br> ");
 
 		} catch (Exception e) {
