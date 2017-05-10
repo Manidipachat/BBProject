@@ -1,0 +1,7 @@
+<suite name="Test - Suite">
+	<test name="Tools QA">
+		<classes>
+			<class name="bbPackage.TestNG" />
+		</classes>
+	</test>
+</suite>
