@@ -3,13 +3,19 @@
 ## Project Setup on your local machine
 
 Step1: git clone https://github.com/Manidipachat/BBProject.git <br />
-Step2: Make sure you have maven installed properly on your machine. <br />
+Step2: Make sure you have maven installed on your machine. <br />
 
 
 
 ## Steps to run the project
-
-Step3: Goto terminal and browse to root of the project. <br />
-Step4: You can either run mvn install from terminal <br />
-Step5: Or, you can directly goto ecllipse or intellJi and right click on testng.xml file and Run it directly <br />
+Step3: If you are on windows, please update your local chromeDriver path in BB_Auto_Browser.java </br></br>
+       System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+       </br></br>
+       On mac install the chromedriver using brew install chromedriver and set the PATH Variable for the chromeDriver </br></br>
+       
+    
+    
+Step4: Goto terminal and browse to root of the project. <br />
+Step5: You can either run mvn install from terminal <br />
+Step6: Or, you can directly goto ecllipse or intellJi and right click on testng.xml file and Run it directly <br />
 
