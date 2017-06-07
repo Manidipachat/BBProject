@@ -48,8 +48,8 @@ public class TestNG {
 
 	@Test
 	public void TC_006() {
-		System.out.println("********  Started Executing TC_006: Delete Computer **************");
-		br.deleteComputer();
+		System.out.println("********  Started Executing TC_006: Update Computer **************");
+		br.updateComputer();
 		System.out.println("********  End of Test Case TC_006 **************\n");
 	}
 
@@ -90,8 +90,8 @@ public class TestNG {
 
 	@Test
 	public void TC_012() {
-		System.out.println("********  Started Executing TC_012: Update Computer Operation **************");
-		br.updateComputer();
+		System.out.println("********  Started Executing TC_012: Delete Computer Operation **************");
+		br.deleteComputer();
 		System.out.println("********  End of Test Case TC_012 **************\n");
 	}
 
