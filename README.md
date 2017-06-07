@@ -1,6 +1,6 @@
 # BBProject for QA Automation
 
-## Project Setup on your local machine
+## Project Setup on your local machine - dev env
 
 Step1: git clone https://github.com/Manidipachat/BBProject.git <br />
 Step2: Make sure you have maven installed on your machine. <br />
